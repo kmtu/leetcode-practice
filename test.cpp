@@ -22,4 +22,9 @@ int main() {
     cols = 100;
     sentence = {"a"};
     std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+
+    rows = 4;
+    cols = 5;
+    sentence = {"I", "had", "apple", "pie"};
+    std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
 }
