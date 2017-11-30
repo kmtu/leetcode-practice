@@ -17,4 +17,9 @@ int main() {
     cols = 5;
     sentence = {"he", "o", "a"};
     std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+
+    rows = 100;
+    cols = 100;
+    sentence = {"a"};
+    std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
 }
