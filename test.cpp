@@ -12,16 +12,19 @@ int main() {
     cols = 5;
     sentence = {"hello", "world"};
     std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+    // 1
 
     rows = 3;
     cols = 5;
     sentence = {"he", "o", "a"};
     std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+    // 2
 
     rows = 100;
     cols = 100;
     sentence = {"a"};
     std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+    // 5000
 
     rows = 4;
     cols = 5;
@@ -35,3 +38,4 @@ int main() {
     std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
     // should be 10
 }
+
