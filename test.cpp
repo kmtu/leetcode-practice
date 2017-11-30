@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include "sentence-screen-fitting.h"
+
+int main() {
+    Solution sol;
+    std::vector<std::string> sentence;
+    int rows, cols;
+
+    rows = 3;
+    cols = 5;
+    sentence = {"hello", "world"};
+    std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+
+    rows = 3;
+    cols = 5;
+    sentence = {"he", "o", "a"};
+    std::cout << sol.wordsTyping(sentence, rows, cols) << std::endl;
+}
