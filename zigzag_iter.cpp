@@ -5,14 +5,13 @@
 using std::vector;
 using std::list;
 using std::pair;
+using std::make_pair;
 
 class ZigzagIterator {
 public:
     ZigzagIterator(vector<int>& v1, vector<int>& v2) : _hasNext(false) {
-        it_pair p1(v1.begin(), v1.end());
-        it_pair p2(v2.begin(), v2.end());
-        vlist.push_back(p1);
-        vlist.push_back(p2);
+        vlist.push_back(make_pair(v1.begin(), v1.end()));
+        vlist.push_back(make_pair(v2.begin(), v2.end()));
         vlist_it = vlist.begin();
         prepare();
     }
