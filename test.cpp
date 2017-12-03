@@ -22,6 +22,9 @@ int main() {
     vector<pair<string, string>> cases;
     cases.push_back(make_pair("12:34", "12:41"));
     cases.push_back(make_pair("10:08", "10:10"));
+    cases.push_back(make_pair("00:01", "00:10"));
+    cases.push_back(make_pair("23:58", "22:22"));
+    cases.push_back(make_pair("20:56", "22:00"));
 
     for (auto tcase : cases) {
         Solution sol;
