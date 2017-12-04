@@ -2,9 +2,8 @@
 
 vector<int> Solution::productExceptSelf(vector<int>& nums) {
     int size = nums.size();
-    vector<int> ret(size);
+    vector<int> ret(size, 1);
 
-    ret[0] = 1;
     for (int i = 1; i < size; ++i) {
         ret[i] = ret[i - 1] * nums[i - 1];
     }
