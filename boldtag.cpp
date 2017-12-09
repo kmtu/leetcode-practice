@@ -66,7 +66,7 @@ public:
                 if (dup.second == false) {
                     // same index exists, replace with new acc_idx
                     // which must be larger than the old one
-                    dup.first->second = acc_idx;
+                    dup.first->second = acc_idx + 1;
                 }
                 rewind();
             }
