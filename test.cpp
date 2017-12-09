@@ -45,7 +45,8 @@ int main() {
     tests.push_back(Test("abc", {"b", "c"}, "a<b>bc</b>"));
     tests.push_back(Test("abc", {"ab", "bc"}, "<b>abc</b>"));
     tests.push_back(Test("aaabbc", {"aaa", "aab", "bc"}, "<b>aaabbc</b>"));
-    tests.push_back(Test("aaabbcc", {"aaa", "aab", "bcc"}, "<b>aaabbc</b>"));
+    tests.push_back(Test("aaabbcc", {"aaa", "aab", "bc"}, "<b>aaabbc</b>c"));
+    tests.push_back(Test("aaabbcc", {"aaa", "aab", "bc", "aaabbcc"}, "<b>aaabbcc</b>"));
 
     for (auto test : tests) {
         test.run(sol);

@@ -112,6 +112,7 @@ string Solution::addBoldTag(string s, vector<string>& dict) {
         ret.append(btag_close);
         cur = tag.second;
     }
+    ret.append(s.begin() + cur, s.end());
 
     return ret;
 }
