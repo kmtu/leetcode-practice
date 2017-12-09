@@ -36,24 +36,31 @@ class Matcher {
     string::size_type str_idx;
     string::size_type acc_idx;
     bool prev_matched;
+    bool all_same_so_far;
 
     void rewind() {
         str_idx = 0;
         prev_matched = false;
+        all_same_so_far = true;
     }
 
 public:
-    Matcher(string str, Tags *tags)
-        : str(str), tags(tags), str_idx(0), acc_idx(0), prev_matched(false) {
+    Matcher(string str, Tags *tags) : str(str), tags(tags), acc_idx(0) {
+        rewind();
     }
 
     void match(const char& c) {
         if (str[str_idx] == c) {
-            ++str_idx;
-            if (prev_matched == false) {
+            if (prev_matched) {
+                if (all_same_so_far && (c != str[str_idx-1])) {
+                    all_same_so_far = false;
+                }
+            }
+            else {
                 str_start = acc_idx;
                 prev_matched = true;
             }
+            ++str_idx;
             if (str_idx == str.size()){
                 auto dup = tags->tags.insert(make_pair(str_start, acc_idx + 1));
                 if (dup.second == false) {
@@ -64,7 +71,11 @@ public:
                 rewind();
             }
         }
-        else rewind();
+        else {
+            if (!(prev_matched && all_same_so_far && (c == str[str_idx-1]))) {
+                rewind();
+            }
+        }
         ++acc_idx;
     }
 

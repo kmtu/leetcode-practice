@@ -44,6 +44,8 @@ int main() {
     tests.push_back(Test("abc", {"a", "c"}, "<b>a</b>b<b>c</b>"));
     tests.push_back(Test("abc", {"b", "c"}, "a<b>bc</b>"));
     tests.push_back(Test("abc", {"ab", "bc"}, "<b>abc</b>"));
+    tests.push_back(Test("aaabbc", {"aaa", "aab", "bc"}, "<b>aaabbc</b>"));
+    tests.push_back(Test("aaabbcc", {"aaa", "aab", "bcc"}, "<b>aaabbc</b>"));
 
     for (auto test : tests) {
         test.run(sol);
