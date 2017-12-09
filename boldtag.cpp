@@ -76,7 +76,10 @@ public:
             }
         }
         else {
-            if (!(prev_matched && all_same_so_far && (c == str[str_idx-1]))) {
+            if (prev_matched && all_same_so_far && (c == str[str_idx-1])) {
+                ++str_start;
+            }
+            else {
                 rewind();
             }
         }
