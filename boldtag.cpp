@@ -14,7 +14,11 @@ struct Tags {
     void squash() {
         tag_type::iterator prev = tags.begin();
         tag_type::iterator it = prev;
-        ++it;
+        if (prev != tags.end())
+            ++it;
+        else
+            return;
+
         while(it != tags.end()) {
             if (it->first <= prev->second) {
                 if (it->second > prev->second)

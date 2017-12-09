@@ -48,6 +48,8 @@ int main() {
     tests.push_back(Test("aaabbcc", {"aaa", "aab", "bc"}, "<b>aaabbc</b>c"));
     tests.push_back(Test("aaabbcc", {"aaa", "aab", "bc", "aaabbcc"}, "<b>aaabbcc</b>"));
     tests.push_back(Test("aaabbcc", {}, "aaabbcc"));
+    tests.push_back(Test("aaabbcc", {"d"}, "aaabbcc"));
+    tests.push_back(Test("aqbqzvwialgmmolvsnavdrwpvneljdfyuvrnjelgpbrpmsgbixvhljhowlhkbomwexaqvhhaztcsvmusfhropjpwzedccymifkmrlcfhocolkssbljmakfuezfxitpkkmuifzusfzcfvfwdvtbbqubnegbnomaquxjfmsnwzccqzthpmhkrvezweaukbuxohfagifhuyuswvdydkwrqmdjecqxblzwdjwcqxczssntyuehjbxbehsdqmqihfwaeleqpjttlgifsxwwqaeezsnslnzdnfojswswlvkfcbznzhtcjupepvrvroetsxtvyjeqwlhdmakrnbptsvppzstevhbdekluulfmwwtgdbgypq", {"aq","bq","zv","wi","al","gm","mo","lv","sn","av","dr","wp","vn","el","jd","fy","uv","rn","je","lg","pb","rp","ms","gb","ix","vh"}, "<b>aqbqzvwialgmmolvsnavdrwpvneljdfyuvrnjelgpbrpmsgbixvh</b>ljhowlhkbomwex<b>aqvh</b>haztcsvmusfhropjpwzedccymifkmrlcfhocolkssbljmakfuezfxitpkkmuifzusfzcfvfwdvtb<b>bq</b>ubne<b>gb</b>nom<b>aq</b>uxjf<b>msn</b>wzccqzthpmhkrvezweaukbuxohfagifhuyuswvdydkwrqmd<b>je</b>cqxblzwdjwcqxczs<b>sn</b>tyuehjbxbehsdqmqihfwa<b>el</b>eqpjtt<b>lg</b>ifsxwwqaeez<b>sn</b>slnzdnfojswsw<b>lv</b>kfcbznzhtcjupepvrvroetsxtvy<b>je</b>qwlhdmak<b>rn</b>bptsvppzste<b>vh</b>bdekluulfmwwtgdbgypq"));
 
     for (auto test : tests) {
         test.run(sol);
