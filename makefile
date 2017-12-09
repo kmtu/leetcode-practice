@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -Wall -std=c++11
+CXXFLAGS = -g -Wall -std=c++14
 
 SRCS = test.cpp boldtag.cpp
 OBJS = $(subst .cpp,.o,$(SRCS))
