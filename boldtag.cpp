@@ -27,14 +27,10 @@ struct Tags {
             }
         }
     }
-
-    auto insert(string::size_type start, string::size_type end) {
-        return tags.insert(make_pair(start, end));
-    }
 };
 
 class Matcher {
-    const string &str;
+    const string str;
     Tags *tags;
     string::size_type str_start;
     string::size_type str_idx;
@@ -48,7 +44,7 @@ class Matcher {
 
 public:
     Matcher(string str, Tags *tags)
-        : str(str), str_idx(0), acc_idx(0), prev_matched(false) {
+        : str(str), tags(tags), str_idx(0), acc_idx(0), prev_matched(false) {
     }
 
     void match(const char& c) {
@@ -58,8 +54,8 @@ public:
                 str_start = acc_idx;
                 prev_matched = true;
             }
-            if (str_idx > str.size()){
-                auto dup = tags->insert(str_start, acc_idx);
+            if (str_idx == str.size()){
+                auto dup = tags->tags.insert(make_pair(str_start, acc_idx + 1));
                 if (dup.second == false) {
                     // same index exists, replace with new acc_idx
                     // which must be larger than the old one
@@ -88,8 +84,10 @@ string Solution::addBoldTag(string s, vector<string>& dict) {
         }
     }
 
+    // resolve overlapped/consecutive tags
     tags.squash();
 
+    // construct return string
     string ret;
     string::size_type cur = 0;
     const string btag_open = "<b>";

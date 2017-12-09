@@ -19,10 +19,10 @@ public:
     }
 
     void run(Solution sol) {
-        cout << "Test " << ++idx << " ..." << endl;
+        cout << "Test " << ++idx << " ...";
         string ans = sol.addBoldTag(str, dict);
         if (ans != truth) {
-            cout << "  Input: " << str << endl;
+            cout << endl << "  Input: " << str << endl;
             cout << "         [ ";
             for (auto s : dict) {
                 cout << s << ' ';
@@ -32,6 +32,7 @@ public:
             cout << "  Ans: " << ans << endl;
             assert(ans == truth);
         }
+        cout << " passed" << endl;
     }
 };
 
