@@ -46,20 +46,12 @@ string Solution::addBoldTag(string s, vector<string>& dict) {
     }
 
     // construct return string
-    string ret;
-    string::size_type cur = 0;
     const string btag_open = "<b>";
     const string btag_close = "</b>";
-    for (auto& tag : tags) {
-        int len_before_tag = tag.first - cur;
-        int len_in_tag = tag.second - tag.first;
-        ret.append(s, cur, len_before_tag);
-        ret.append(btag_open);
-        ret.append(s, tag.first, len_in_tag);
-        ret.append(btag_close);
-        cur = tag.second;
+    for (auto it = tags.rbegin(); it != tags.rend(); ++it) {
+        s.insert(it->second, btag_close);
+        s.insert(it->first, btag_open);
     }
-    ret.append(s.begin() + cur, s.end());
 
-    return ret;
+    return s;
 }
