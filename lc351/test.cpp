@@ -33,10 +33,11 @@ int Test::_idx = 0;
 
 int main() {
     Solution sol;
-    std::vector<Test> tests {{1, 1, 1},
-                             {2, 2, 40}};
+    std::vector<Test> tests {{1, 1, 9},
+                             {2, 2, 56}};
 
     for (auto test : tests) {
         test.run(sol);
     }
 }
+
