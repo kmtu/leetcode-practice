@@ -6,12 +6,13 @@ using std::vector;
 using std::stack;
 
 int Solution::numberOfPatterns(int m, int n) {
-    constexpr int NUM_KEYS = 9;
-    stack<int> search;
-    for (int i = 1; i <= NUM_KEYS; ++i)
-        search.push(i);
+    return Solution::dfs(1, m, n) * 4 + Solution::dfs(2, m, n) * 4 + Solution::dfs(5, m, n);
+}
 
-    vector<bool> pressed(NUM_KEYS + 1, false);
+int Solution::dfs(int start, int m, int n) {
+    stack<int> search;
+    search.push(start);
+    vector<bool> pressed(10, false);
     int patternCount = 0;
     int numKeyPressed = 0;
     while (!search.empty()) {
