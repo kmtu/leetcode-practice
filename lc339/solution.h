@@ -34,5 +34,5 @@ class Solution {
 public:
     int depthSum(std::vector<NestedInteger>& nestedList);
 private:
-    int sum(const std::vector<NestedInteger>& nestedList, int level = 1);
+    void sum(const std::vector<NestedInteger>& nestedList, int level, int& result);
 };
