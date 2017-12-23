@@ -3,20 +3,16 @@
 using std::vector;
 
 int Solution::depthSum(vector<NestedInteger>& nestedList) {
-    int ret = 0;
-	for (auto nsi : nestedList) {
-        ret += sum(nsi);
-    }
-    return ret;
+    return Solution::sum(nestedList);
 }
 
-int Solution::sum(NestedInteger& nestedInt, int level = 1) {
-    if (nestedInt.isInteger())
-        return level * nestedInt.getInteger();
-
+int Solution::sum(const vector<NestedInteger>& nestedList, int level) {
     int ret = 0;
-    for (auto nsi : nestedInt.getList()) {
-        ret += sum(nsi, level + 1);
+    for (auto nsi : nestedList) {
+        if (nsi.isInteger())
+            ret += level * nsi.getInteger();
+        else
+            ret += sum(nsi.getList(), level + 1);
     }
     return ret;
 }
