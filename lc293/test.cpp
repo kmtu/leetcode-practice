@@ -13,11 +13,13 @@ Test::Test(const string str, const vector<string>& truth)
         : str(str), truth(truth), idx(_idx++) {
 }
 
-void Test::run(Solution &sol) {
+bool Test::run(Solution &sol) {
+    bool passed = false;
     cout << "Test" << idx << " ... ";
     const auto ans = sol.generatePossibleNextMoves(str);
     if (ans == truth) {
         cout << "passed!" << endl;
+        passed = true;
     }
     else {
         cout << "failed!" << endl;
@@ -36,4 +38,6 @@ void Test::run(Solution &sol) {
         }
         cout << "\"]" << endl;
     }
+    return passed;
 }
+

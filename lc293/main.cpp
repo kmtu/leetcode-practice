@@ -15,7 +15,11 @@ int main() {
         {"+-++", {"+---"}}
     };
 
+    bool allpass = true;
     for (auto test : tests) {
-        test.run(sol);
+        allpass = allpass && test.run(sol);
     }
+
+    return allpass?0:-1;
 }
+

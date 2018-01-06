@@ -13,7 +13,8 @@ class Test {
 
 public:
     Test(const std::string str, const std::vector<std::string>& truth);
-    void run(Solution &sol);
+    bool run(Solution &sol);
 };
 
 #endif /* TEST_H */
+
