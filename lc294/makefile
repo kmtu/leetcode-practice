@@ -1,3 +1,4 @@
+CPPFLAGS = -I../test/include
 CXXFLAGS = -g -Wall -std=c++11
 SRC = main.cpp solution294.cpp
 OBJ = $(SRC:%.cpp=%.o)
