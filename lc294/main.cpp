@@ -12,7 +12,7 @@ int main() {
 
     bool allpass = true;
     for (auto test : tests)
-        allpass = allpass && test.run();
+        allpass = test.run() && allpass;
 
     return allpass?0:-1;
 }
