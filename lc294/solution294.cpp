@@ -4,16 +4,19 @@ using std::string;
 using std::vector;
 
 bool Solution294::canWin(string s) {
+    auto it = mem.find(s);
+    if (it != mem.end())
+        return it->second;
     size_t pos = s.find("++");
     while (pos != string::npos) {
         s[pos] = s[pos+1] = '-';
-        if (!canWin(s)) {
-            return true;
-        }
+        bool win = !canWin(s);
         s[pos] = s[pos+1] = '+';
+        if (win)
+            return mem[s] = true;
         pos = s.find("++", pos + 1);
     }
-    return false;
+    return mem[s] = false;
 }
 
 string Solution294::toStr(bool a) {
