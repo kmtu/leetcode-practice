@@ -9,7 +9,6 @@ all: $(BIN)
 
 %.d: %.cpp
 	@set -e; rm -f $@; \
-	tmpd=$$(mktemp); \
 	$(CXX) -MM $(CPPFLAGS) $< | sed -E 's/(.*)\.o[ :]*/\1.o $@ : /g' > $@
 
 
