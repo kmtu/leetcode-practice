@@ -13,15 +13,27 @@ class Test {
     bool passed;
     inT input;
     outT truth;
+    void (*proc)(outT&);
 
 public:
     Test(inT input, outT truth)
-        : index(nextIndex++), passed(false), input(input), truth(truth) {
+        : index(nextIndex++), passed(false), input(input), truth(truth),
+          proc(nullptr) {
+    }
+
+    Test(inT input, outT truth, void (*proc)(outT&))
+        : index(nextIndex++), passed(false), input(input), truth(truth),
+          proc(proc) {
     }
 
     bool run() {
         solT sol;
         outT ans = sol.run(input);
+
+        if (proc) {
+            proc(truth);
+            proc(ans);
+        }
 
         std::cout << "Test" << index << " ... ";
         if (ans == truth) {
