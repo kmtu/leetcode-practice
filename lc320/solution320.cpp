@@ -33,15 +33,3 @@ vector<string> Solution320::run(string s) {
     return generateAbbreviations(s);
 }
 
-string Solution320::toStr(vector<string> vs) {
-    string ret("[");
-    auto it = vs.begin();
-    if (it != vs.end()) {
-        ret += *it;
-        for (++it; it != vs.end(); ++it) {
-            ret += ", " + *it;
-        }
-    }
-    return ret += ']';
-}
-

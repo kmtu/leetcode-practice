@@ -9,7 +9,6 @@
 class Solution294 : public Solution<std::string, bool> {
 public:
     bool run(std::string) override;
-    std::string toStr(bool) override;
 private:
     bool canWin(std::string);
     std::unordered_map<std::string, bool> mem;

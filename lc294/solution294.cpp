@@ -19,10 +19,6 @@ bool Solution294::canWin(string s) {
     return mem[s] = false;
 }
 
-string Solution294::toStr(bool a) {
-    return a?"true":"false";
-}
-
 bool Solution294::run(string s) {
     return canWin(s);
 }
