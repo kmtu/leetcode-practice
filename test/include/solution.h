@@ -52,5 +52,45 @@ std::string Solution<inT, bool>::toStr(output_type out) {
     return out?"true":"false";
 }
 
+/* outT: vector<vector<string>> */
+template <typename inT>
+class Solution<inT, std::vector<std::vector<std::string>>> {
+public:
+    using input_type = inT;
+    using output_type = std::vector<std::vector<std::string>>;
+    virtual output_type run(input_type) = 0;
+    virtual std::string toStr(output_type);
+};
+
+template <typename inT>
+std::string Solution<inT, std::vector<std::vector<std::string>>>::toStr(
+        output_type vvs) {
+    std::string ret("[");
+    auto vvsit = vvs.begin();
+    if (vvsit != vvs.end()) {
+        ret += "[";
+        auto vsit = vvsit->begin();
+        if (vsit != vvsit->end()) {
+            ret += *vsit;
+            for (++vsit; vsit != vvsit->end(); ++vsit) {
+                ret += ", " + *vsit;
+            }
+        }
+        ret += "]";
+        for (++vvsit; vvsit != vvs.end(); ++vvsit) {
+            ret += ",\n           [";
+            auto vsit = vvsit->begin();
+            if (vsit != vvsit->end()) {
+                ret += *vsit;
+                for (++vsit; vsit != vvsit->end(); ++vsit) {
+                    ret += ", " + *vsit;
+                }
+            }
+            ret += "]";
+        }
+    }
+    return ret += "]";
+}
+
 #endif /* SOLUTION_H */
 
