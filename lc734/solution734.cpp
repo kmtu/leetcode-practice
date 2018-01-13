@@ -9,37 +9,24 @@ using std::pair;
 using std::unordered_set;
 using std::size_t;
 
-struct PairsHash {
-    const size_t operator()(const pair<string, string>& in) const {
-        size_t h1 = std::hash<string>{}(in.first);
-        size_t h2 = std::hash<string>{}(in.second);
-        return h1 ^ h2;
-    } 
-};
-
-struct PairsEqual {
-    bool operator()(
-            const pair<string, string>& p1, const pair<string, string>& p2) const {
-        return p1 == p2 || (p1.first == p2.second && p1.second == p2.first);
-    }
-};
-
 bool Solution734::areSentencesSimilar(
         vector<string>& words1, vector<string>& words2,
         vector<pair<string, string>> pairs) {
     if (words1.size() != words2.size())
         return false;
 
-    unordered_set<pair<string, string>, PairsHash, PairsEqual> dict;
+    unordered_set<string> dict;
     for (auto p : pairs) {
-        dict.insert(p);
+        dict.insert(p.first + '/' + p.second);
     }
 
     for (size_t i = 0; i < words1.size(); ++i) {
         string& w1 = words1[i];
         string& w2 = words2[i];
-        if (w1 != w2 && (dict.count(std::make_pair(w1, w2)) == 0))
+        if (w1 != w2 && (dict.count(w1 + '/' + w2) == 0) &&
+                        (dict.count(w2 + '/' + w1) == 0)) {
             return false;
+        }
     }
     return true;
 }
